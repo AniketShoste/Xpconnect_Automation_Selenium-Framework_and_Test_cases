@@ -1,0 +1,10 @@
+
+pytest
+pytest-html
+pytest-html-reporter
+pytest-html==3.1.1
+pytest-json-report
+pytest-reportportal
+pytest==7.3.1
+python-jenkins==1.7.0
+selenium==4.9.0
