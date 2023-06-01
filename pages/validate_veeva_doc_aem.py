@@ -1,16 +1,76 @@
-from pages.base import BaseSetup
+import time
+
 from selenium.webdriver.common.by import By
+
+from pages.base import BaseSetup
 
 
 class ValidateVeevaDocAem(BaseSetup):
     def __init__(self, driver):
         super().__init__(driver)
 
+    home_page_aem = (By.XPATH, "//a[@id='globalNavHeader']/coral-icon[@role='img']")
+    folder_asset = (By.CSS_SELECTOR, "[icon='asset']")
+    folder_files = (By.CSS_SELECTOR, "coral-masonry-item:nth-of-type(1) > div[role='link'] > coral-icon")
+    folder_xpconnect = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(10)  .coral3-Card.coral3-Card--inverted.foundation-collection-navigator  coral-card-content > coral-card-propertylist")
+    folder_demovault = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(1)  .coral3-Card.coral3-Card--inverted.foundation-collection-navigator  coral-card-content > .coral3-Card-context")
+    content_component_asset = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(10)  .coral3-Card.foundation-collection-navigator > coral-card-info")
+    xp_connect_content = (By.CSS_SELECTOR, "a#xpconnect-trigger > coral-anchorbutton-label")
+    v_meta_data = (By.CSS_SELECTOR, "div#pageinfo-data > button[title='Veeva Metadata']")
+    document_id_vm = (By.CSS_SELECTOR, "tr:nth-of-type(9) > td:nth-of-type(2)")
 
-    home_page_aem = (By.CSS_SELECTOR, "#globalNavHeader [icon]")
-    component_asset = (By.CSS_SELECTOR, "li:nth-of-type(3) > .categoryTerm.doc_link.vv-facet-term")
-    content_component_asset = (By.CSS_SELECTOR, "div[name='book'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
-    menu_for_aem_env = (By.CSS_SELECTOR,".css-14vl23m-childrenCSS-css-css  .css-11eaezd-buttonCSS-buttonCSS-buttonCSS-buttonCSS-buttonCSS-buttonCSS-DropdownMenu-DropdownMenu > .css-1il8e9o-DropdownMenu")
-    demo_env = (By.CSS_SELECTOR, "[data-value='dynamicAction\:LifecycleUserAction10']")
-    close_page = (By.CSS_SELECTOR, ".closeIFrameTemplate")
-    global_doc_id = (By.CSS_SELECTOR, ".docInfoValue-docGlobalId_b")
+    def click_home_page_aem(self):
+        self.seleniumutil.wait_for_element(self.home_page_aem)
+        self.seleniumutil.click(*self.home_page_aem)
+        print("Clcked on AEM Homepge")
+
+    def click_folder_asset(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.folder_asset)
+        self.seleniumutil.click(*self.folder_asset)
+        print("Clcked on Folder Asset page")
+
+    def click_folder_files(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.folder_files)
+        self.seleniumutil.click(*self.folder_files)
+        print("Clcked on Folder file page")
+
+    def click_folder_xpconnect(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.folder_xpconnect)
+        self.seleniumutil.click(*self.folder_xpconnect)
+        print("Clcked on Folder xpconnect page")
+
+    def click_folder_demovault(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.folder_demovault)
+        self.seleniumutil.click(*self.folder_demovault)
+        print("Clcked on Folder demovault page")
+
+    def click_content_component_asset(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.content_component_asset)
+        self.seleniumutil.click(*self.content_component_asset)
+        print("Clcked on content sent from veeva")
+
+    def click_xpconnect_menu(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.xp_connect_content)
+        self.seleniumutil.click(*self.xp_connect_content)
+        print("Clcked on xpconnect from menu")
+
+    def click_v_metadata(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.v_meta_data)
+        self.seleniumutil.click(*self.v_meta_data)
+        print("Clcked on veeva metadata")
+
+    def click_doc_id_vm(self):
+        time.sleep(3)
+        self.seleniumutil.wait_for_element(self.document_id_vm)
+        doc_idaem = self.seleniumutil.text(*self.document_id_vm)
+        print("Document id captured", doc_idaem)
+
+    def click_from_aem_homepage(self):
+        self.seleniumutil.click_js("//a[@id='globalNavHeader']/coral-icon[@role='img']")

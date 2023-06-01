@@ -2,3 +2,8 @@
 *.pyc
 .idea
 .DS_Store
+assets
+archive
+xp_automation
+*.html
+output.json

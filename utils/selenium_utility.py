@@ -40,13 +40,13 @@ class SeleniumUtility():
             print("While opening browser", ex)
 
     def switch_to_window(self, windowtitle):
-        current_window_handle = self.driver.current_window_handle
-        print("Window handles",self.driver.window_handles)
+        print("Window handles", self.driver.window_handles)
+        print("current window handle",self.driver.current_window_handle)
         for each_window in self.driver.window_handles:
-            self.driver.switch_to.window(each_window)
-            if windowtitle in self.driver.title.lower():
-                break
-
+            print("current title",self.driver.title)
+            if not (windowtitle.lower() in self.driver.title.lower()):
+                self.driver.switch_to.window(each_window)
+                print("each window",each_window)
 
     def text(self, selector, locator):
         try:
@@ -59,3 +59,9 @@ class SeleniumUtility():
 
     def close_browser(self):
         self.driver.quit()
+
+    def click_js(self, locator):
+        self.driver.execute_script(f"document.querySelector('${locator}').click();")
+
+    def close_tab(self):
+        self.driver.close()

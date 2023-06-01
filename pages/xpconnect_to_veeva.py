@@ -1,7 +1,8 @@
 import time
 
-from pages.base import BaseSetup
 from selenium.webdriver.common.by import By
+
+from pages.base import BaseSetup
 
 
 class AemToVeeva(BaseSetup):

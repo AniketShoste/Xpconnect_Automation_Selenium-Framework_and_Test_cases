@@ -6,8 +6,6 @@ from utils.selenium_utility import SeleniumUtility
 '''
 Initialize webdriver and url of an application.
 '''
-
-
 class BaseSetup:
     def __init__(self, driver):
         print("driver for base class", driver)
@@ -33,3 +31,6 @@ class BaseSetup:
 
     def refresh_page(self):
         self.seleniumutil.refresh()
+
+    def close_tab(self):
+        self.seleniumutil.close_tab()

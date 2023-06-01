@@ -1,5 +1,6 @@
-from pages.base import BaseSetup
 from selenium.webdriver.common.by import By
+
+from pages.base import BaseSetup
 
 
 class VeevatoAemContentTransfer(BaseSetup):
@@ -46,9 +47,9 @@ class VeevatoAemContentTransfer(BaseSetup):
     def close_page_icon(self):
         self.seleniumutil.wait_for_element(self.close_page)
         self.seleniumutil.click(*self.close_page)
-        print("Clcked on demo environment")
+        print("Clcked on close page icon")
 
     def global_document_id(self):
         self.seleniumutil.wait_for_element(self.global_doc_id)
         self.seleniumutil.click(*self.global_doc_id)
-        print("Clcked on demo environment")
+        print("Captured global account id")
