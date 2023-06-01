@@ -37,7 +37,7 @@ class WebDriverUtil:
         global driver
         if browser == "Chrome":
             options = webdriver.ChromeOptions()
-            #options.headless = True
+            options.headless = True
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
         elif browser == "Firefox":
             driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
