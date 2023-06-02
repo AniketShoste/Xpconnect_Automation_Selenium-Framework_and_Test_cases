@@ -38,6 +38,7 @@ class WebDriverUtil:
         if browser == "Chrome":
             options = webdriver.ChromeOptions()
             options.headless = True
+            options.add_argument("--window-size=1920,1080")
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
         elif browser == "Firefox":
             driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
