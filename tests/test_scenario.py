@@ -49,6 +49,7 @@ def test_scenario2(set_up):
     veevatoaem.click_all_library()
     veevaaemdoctransfer.document_types_veeva()
     veevaaemdoctransfer.component_asset_veeva()
+    base_page.refresh_page()
     veevaaemdoctransfer.content_component_asset_veeva()
     veevaaemdoctransfer.menu_for_aem_env_veeva()
     veevaaemdoctransfer.demo2_env_aem()
