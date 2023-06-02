@@ -13,7 +13,7 @@ class VeevatoAemContentTransfer(BaseSetup):
     #all_library = (By.CSS_SELECTOR, "li:nth-of-type(2) > .vv-navbar-link")
     document_Types = (By.CSS_SELECTOR, "[order='0'] .facetGroupLabel")
     component_asset = (By.CSS_SELECTOR, "li:nth-of-type(3) > .categoryTerm.doc_link.vv-facet-term")
-    content_component_asset = (By.CSS_SELECTOR, "div[name='book'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
+    content_component_asset = (By.CSS_SELECTOR, "div[name='SunflowerTest'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
     menu_for_aem_env = (By.CSS_SELECTOR,".css-14vl23m-childrenCSS-css-css  .css-11eaezd-buttonCSS-buttonCSS-buttonCSS-buttonCSS-buttonCSS-buttonCSS-DropdownMenu-DropdownMenu > .css-1il8e9o-DropdownMenu")
     demo_env = (By.CSS_SELECTOR, "[data-value='dynamicAction\:LifecycleUserAction10']")
     close_page = (By.CSS_SELECTOR, ".closeIFrameTemplate")

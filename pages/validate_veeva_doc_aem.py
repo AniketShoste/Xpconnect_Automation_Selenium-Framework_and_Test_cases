@@ -14,12 +14,13 @@ class ValidateVeevaDocAem(BaseSetup):
     folder_files = (By.CSS_SELECTOR, "coral-masonry-item:nth-of-type(1) > div[role='link'] > coral-icon")
     folder_xpconnect = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(10)  .coral3-Card.coral3-Card--inverted.foundation-collection-navigator  coral-card-content > coral-card-propertylist")
     folder_demovault = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(1)  .coral3-Card.coral3-Card--inverted.foundation-collection-navigator  coral-card-content > .coral3-Card-context")
-    content_component_asset = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(10)  .coral3-Card.foundation-collection-navigator > coral-card-info")
+    content_component_asset = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(14)  .coral3-Card.foundation-collection-navigator > coral-card-info")
     xp_connect_content = (By.CSS_SELECTOR, "a#xpconnect-trigger > coral-anchorbutton-label")
     v_meta_data = (By.CSS_SELECTOR, "div#pageinfo-data > button[title='Veeva Metadata']")
     document_id_vm = (By.CSS_SELECTOR, "tr:nth-of-type(9) > td:nth-of-type(2)")
 
     def click_home_page_aem(self):
+        time.sleep(2)
         self.seleniumutil.wait_for_element(self.home_page_aem)
         self.seleniumutil.click(*self.home_page_aem)
         print("Clcked on AEM Homepge")
