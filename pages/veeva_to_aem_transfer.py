@@ -56,5 +56,6 @@ class VeevatoAemContentTransfer(BaseSetup):
 
     def global_document_id(self):
         self.seleniumutil.wait_for_element(self.global_doc_id)
-        self.seleniumutil.click(*self.global_doc_id)
-        print("Captured global account id")
+        global_id_veeva = self.seleniumutil.text(*self.global_doc_id)
+        self.propertyutil.set_property("global_id_veeva", global_id_veeva)
+        print("Captured global account id",global_id_veeva)

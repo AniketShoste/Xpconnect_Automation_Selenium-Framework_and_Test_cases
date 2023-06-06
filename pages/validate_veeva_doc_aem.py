@@ -3,10 +3,13 @@ import time
 from selenium.webdriver.common.by import By
 
 from pages.base import BaseSetup
+from pages.veeva_to_aem_transfer import VeevatoAemContentTransfer
+from utils.webdriverutil import WebDriverUtil
 
 '''
 This class validates document sent from veeva to AEM.
 '''
+
 class ValidateVeevaDocAem(BaseSetup):
     def __init__(self, driver):
         super().__init__(driver)
@@ -22,7 +25,7 @@ class ValidateVeevaDocAem(BaseSetup):
     content_component_asset = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(14)  .coral3-Card.foundation-collection-navigator > coral-card-info")
     xp_connect_content = (By.CSS_SELECTOR, "a#xpconnect-trigger > coral-anchorbutton-label")
     v_meta_data = (By.CSS_SELECTOR, "div#pageinfo-data > button[title='Veeva Metadata']")
-    document_id_vm = (By.CSS_SELECTOR, "tr:nth-of-type(9) > td:nth-of-type(2)")
+    document_id_vm = (By.CSS_SELECTOR, "tr:nth-of-type(8) > td:nth-of-type(2)")
 
     def click_home_page_aem(self):
         time.sleep(2)
@@ -72,11 +75,15 @@ class ValidateVeevaDocAem(BaseSetup):
         self.seleniumutil.click(*self.v_meta_data)
         print("Clicked on veeva metadata")
 
-    def click_doc_id_vm(self):
+
+
+    # def click_from_aem_homepage(self):
+    #     self.seleniumutil.click_js("//a[@id='globalNavHeader']/coral-icon[@role='img']")
+
+    def assert_document_id_veeva_to_aem(self):
         time.sleep(3)
         self.seleniumutil.wait_for_element(self.document_id_vm)
-        doc_idaem = self.seleniumutil.text(*self.document_id_vm)
-        print("Document id captured", doc_idaem)
-
-    def click_from_aem_homepage(self):
-        self.seleniumutil.click_js("//a[@id='globalNavHeader']/coral-icon[@role='img']")
+        doc_id_aem = self.seleniumutil.text(*self.document_id_vm)
+        print("Document id captured", doc_id_aem)
+        assert doc_id_aem in self.propertyutil.get_property("global_id_veeva")
+        print("Document sent from veeva to aem successfully")

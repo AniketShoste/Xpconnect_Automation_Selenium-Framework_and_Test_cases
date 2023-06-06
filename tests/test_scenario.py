@@ -68,4 +68,4 @@ def test_scenario2(set_up):
     validateveevatoaem.click_content_component_asset()
     validateveevatoaem.click_xpconnect_menu()
     validateveevatoaem.click_v_metadata()
-    validateveevatoaem.click_doc_id_vm()
+    validateveevatoaem.assert_document_id_veeva_to_aem()
