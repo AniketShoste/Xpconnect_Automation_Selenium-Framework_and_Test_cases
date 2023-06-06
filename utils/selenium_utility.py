@@ -2,13 +2,17 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-
+'''
+This is a utility class contains has all the selenium related methods which are common and all are reusable across framework.
+'''
 class SeleniumUtility():
     def __init__(self, driver):
         self.driver = driver
         print(self.driver)
         self.actions = ActionChains(self.driver)
-
+    '''
+    send keys method is used to input text in the textfield
+    '''
     def send_keys(self, selector, locator, value):
         try:
             # self.driver.find_element(By.ID)
@@ -65,3 +69,7 @@ class SeleniumUtility():
 
     def close_tab(self):
         self.driver.close()
+
+    def take_screenshot(self):
+        self.driver.save_screenshot("screenshot_store.png")
+        print("screenshot captured")

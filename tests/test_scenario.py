@@ -10,7 +10,9 @@ from utils.property_util import PropertyUtils
 from utils.webdriverutil import WebDriverUtil
 
 propertyutil = PropertyUtils()
-
+'''
+Test cases gets executed from this file. 
+'''
 
 def test_scenario1(set_up):
     print("____________Scenario 1________________")

@@ -6,7 +6,11 @@ from pages.login_page import LoginPage
 from tests.test_scenario import propertyutil
 from utils.webdriverutil import WebDriverUtil
 
+'''
+This method gets passed in the test classes and gets executed before test steps, This method is used for setting up application and tearing it down
+after the execution is over
 
+'''
 @pytest.fixture()
 def set_up():
     login_page = LoginPage(WebDriverUtil.get_instance().getwebdriver("Chrome"))

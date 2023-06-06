@@ -34,3 +34,6 @@ class BaseSetup:
 
     def close_tab(self):
         self.seleniumutil.close_tab()
+
+    def captured_screenshot(self):
+        self.seleniumutil.take_screenshot()

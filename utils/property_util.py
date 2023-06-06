@@ -1,3 +1,7 @@
+'''
+
+Property class is reading values from application property file and also setting and getting value from property file.
+'''
 class PropertyUtils:
     # configs = Properties()
     configs = {}

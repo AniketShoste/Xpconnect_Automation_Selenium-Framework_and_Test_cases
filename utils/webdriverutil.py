@@ -4,7 +4,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
+'''
+this class initialize the web driver and handles the browser dependency
 
+'''
 
 class WebDriverUtil:
     __d_instance = None
@@ -37,7 +40,7 @@ class WebDriverUtil:
         global driver
         if browser == "Chrome":
             options = webdriver.ChromeOptions()
-            options.headless = True
+            #options.headless = True
             options.add_argument("--window-size=1920,1080")
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
         elif browser == "Firefox":

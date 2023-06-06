@@ -1,0 +1,126 @@
+Selenium Python Automation Framework with pytest
+Introduction
+This document provides a detailed guide on how to set up and use a Selenium Python Automation Framework with pytest. Selenium is a popular open-source framework for automating web browsers, and pytest is a testing framework that simplifies the process of writing and executing tests in Python. By combining these two tools, you can create robust and scalable test automation solutions.
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+1. Installation
+To get started, you need to set up your development environment. Follow the steps below to install the necessary components:
+
+Install Python: Download and install the latest version of Python from the official website (https://www.python.org).
+
+Install pip: pip is a package manager for Python. It comes bundled with Python versions 3.4 and above. Verify if pip is installed by running the command pip --version in the terminal. If not, you can install it using python -m ensurepip --upgrade or by following the official pip installation guide.
+
+Install Selenium: Use pip to install the Selenium package by running pip install selenium in the terminal.
+
+Install pytest: Use pip to install the pytest package by running pip install pytest in the terminal.
+
+Download WebDriver: Selenium requires a WebDriver to interface with the chosen browser. Download the WebDriver executable for your preferred browser (Chrome, Firefox, etc.) and ensure the WebDriver executable is available in your system's PATH.
+
+With these installations complete, you are ready to proceed to the next sections.
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+2. Project Structure
+
+The tests/ -  directory contains the test suite files, each representing a logical grouping of related test cases. Inside each test suite, individual test case files are created,to initialize the WebDriver and make it available to each test case, we can use pytest fixtures.
+
+The pages/ -  directory contains page object models (POMs) or page modules representing the web pages you are automating. POMs provide a way to abstract away the details of the web pages, making the tests more readable and maintainable.
+    base class : - This class initialize the util classes and also initializes the common method from other util classes.
+    Login class: Initialization and parametarization of login related methods are done in this class.
+    Page classes : each page of the application gets converted into a separate classes and stored in the form of locators and actions in the same class.
+
+The utils/ - directory includes utility modules such as driver.py, which handles the setup and teardown of the WebDriver, and other common utilities required for test execution.
+   Utils package has property utils, Selenium Utils and Webdriver Utils
+   PropertyUtils : - This class is taking the values from the application property file and passing and fetching it to and from property file with get and set methods.
+   SeleniumUtils :  This class contains all the selenium related methods where user can input values using send_keys(), can click on buttons and links using Click(), etc.
+   WebdriverUtils : This class contains methods to initialze the webdriver on the choice of browser suite need to be executed.You can customize this function to use the appropriate browser and configuration options.
+
+The application.properties: This file has user credentials and urls stored which can be parameterized in the framework using propertyutils class.
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+3. Writing Test Cases
+
+For writing steps, we need all the functional action steps and assertion steps. No locator and action method gets written in the test file.
+Test file should always start with test_filename or filename_test. Class objects gets created from pages package and corrosponding methods gets called
+to complete the actions and assertions gets called and values gets compared from/to property file. Please see test_scenario.py for reference.
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+4. Running Tests
+
+To execute your tests, open a terminal or command prompt and navigate to the root directory of your project. Run the following command:
+
+pytest -sv --html=report.html - All scenario's
+
+pytest -sv -k "test_scenario2" --html=report.html - Single scenario
+
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+5. How to create virtual environment
+
+For Windows:
+
+python -m venv <env_name>
+<env_name>\Scripts\activate
+
+For macOS/Linux:
+
+python3 -m venv <env_name>
+source <env_name>/bin/activate
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+How to generate SSH key in bit bucket
+
+
+To need to create and add private key in your bit bucket account to clone this
+Pycharm terminal - ls -al ~/.ssh
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+cat ~/.ssh/id_rsa.pub
+Log in to your Bitbucket account.
+Click on your profile picture in the top right corner and select "Bitbucket settings."
+In the left sidebar, click on "SSH keys."
+Click on the "Add key" button.
+Provide a label for the SSH key (e.g., "Personal Laptop" or "Work Desktop").
+Paste the copied public key into the "Key" field.
+Click on the "Add key" button to save the SSH key to your Bitbucket account
+Pycharm terminal - git config --global url."git@bitbucket.org:".insteadOf "https://bitbucket.org/"
+git clone git@bitbucket.org:xpediant/qa-automation.git
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Git Set Up
+
+- git clone git@bitbucket.org:xpediant/qa-automation.git
+
+After cloning
+
+git new branch from main in local - Do not work on main branch
+
+- git checkout -b <branchname>
+
+To pull changes from remote branch
+
+ - git pull origin
+
+To add changed file from local to remote branch
+
+- git add <filename>
+
+To commit changes post adding
+
+- git commit -m <commit message>
+
+To push changes to origin
+
+- git push -u origin master
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+How run automation from jenkins
+
+Jenkins URL - http://34.218.110.182/ (username and password needed)
+Project Xpconnect Selenium
+Build with parameters
+Build
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________

@@ -4,13 +4,20 @@ from selenium.webdriver.common.by import By
 
 from pages.base import BaseSetup
 
-
+'''
+This class is sending document from AEM to Veeva using xpconnect workflow
+'''
 class AemToVeeva(BaseSetup):
     def __init__(self, driver):
         super().__init__(driver)
         print("login page init")
         # self.driver = driver
         # self.selenium_utility = SeleniumUtility(self.driver)
+
+
+    '''
+          Locators and methods of the page written on same page - This is part of page object model
+    '''
 
     we_retail = (By.XPATH,"//coral-columnview-item-thumbnail//img[@src='/content/we-retail.thumb.48.48.png?ck=1602193946']")
     xp_connect =(By.XPATH, "//a[@id='xpconnect-trigger']")
@@ -84,15 +91,15 @@ class AemToVeeva(BaseSetup):
         print("Document number is", doc_id)
         #time.sleep(10)
 
-    def new_tab(self,url):
-        self.seleniumutil.open_new_tab(url)
-        print("new tab opened")
-        time.sleep(5)
-
-    def switch_window(self,windowtitle):
-        self.seleniumutil.switch_to_window(windowtitle)
-        print("Switch to window")
-        time.sleep(5)
-
-    def refresh_page(self):
-        self.seleniumutil.refresh()
+    # def new_tab(self,url):
+    #     self.seleniumutil.open_new_tab(url)
+    #     print("new tab opened")
+    #     time.sleep(5)
+    #
+    # def switch_window(self,windowtitle):
+    #     self.seleniumutil.switch_to_window(windowtitle)
+    #     print("Switch to window")
+    #     time.sleep(5)
+    #
+    # def refresh_page(self):
+    #     self.seleniumutil.refresh()
