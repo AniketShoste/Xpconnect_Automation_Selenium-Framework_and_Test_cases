@@ -13,8 +13,7 @@ class LoginPage(BaseSetup):
     def __init__(self, driver):
         super().__init__(driver)
         print("login page init")
-        # self.driver = driver
-        # self.selenium_utility = SeleniumUtility(self.driver)
+
 
     username_field = (By.CSS_SELECTOR, "#username")
     password_field = (By.CSS_SELECTOR, "#password")
@@ -37,7 +36,7 @@ class LoginPage(BaseSetup):
     '''
 
     def enter_username(self, xp_username):
-        self.seleniumutil.wait_for_element(self.username_field)
+        self.seleniumutil.wait_for_element_visible(self.username_field)
         print(*self.username_field)
         self.seleniumutil.send_keys(*self.username_field, xp_username)
         print("Username entered")
@@ -47,7 +46,7 @@ class LoginPage(BaseSetup):
     '''
 
     def enter_password(self, xp_password):
-        self.seleniumutil.wait_for_element(self.password_field)
+        self.seleniumutil.wait_for_element_visible(self.password_field)
         self.seleniumutil.send_keys(*self.password_field, xp_password)
         print("Password entered")
     '''
@@ -55,7 +54,7 @@ class LoginPage(BaseSetup):
     '''
 
     def click_login(self):
-        self.seleniumutil.wait_for_element(self.login_button)
+        self.seleniumutil.wait_for_element_visible(self.login_button)
         self.seleniumutil.click(*self.login_button)
         print("Button clicked")
     '''
@@ -79,7 +78,7 @@ class LoginPage(BaseSetup):
     '''
 
     def enter_veeva_password(self, veeva_password):
-        self.seleniumutil.wait_for_element(self.veeva_password)
+        self.seleniumutil.wait_for_element_visible(self.veeva_password)
         self.seleniumutil.send_keys(*self.veeva_password, veeva_password)
         print("Veeva Password entered")
 
@@ -88,7 +87,7 @@ class LoginPage(BaseSetup):
     '''
 
     def click_veeva_login(self):
-        self.seleniumutil.wait_for_element(self.veeva_submit)
+        self.seleniumutil.wait_for_element_visible(self.veeva_submit)
         self.seleniumutil.click(*self.veeva_submit)
         print("Veeva logged in ")
 
@@ -109,8 +108,8 @@ class LoginPage(BaseSetup):
 
     def click_aem_sign_out(self):
         time.sleep(3)
-        self.seleniumutil.wait_for_element(self.aem_user)
+        self.seleniumutil.wait_for_element_visible(self.aem_user)
         self.seleniumutil.click(*self.aem_user)
-        self.seleniumutil.wait_for_element(self.aem_sign_out)
+        self.seleniumutil.wait_for_element_visible(self.aem_sign_out)
         self.seleniumutil.click(*self.aem_sign_out)
         print("AEM Signed out")

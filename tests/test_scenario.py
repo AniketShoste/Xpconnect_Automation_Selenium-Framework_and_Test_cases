@@ -1,5 +1,6 @@
 import time
 
+from pages.aem_appsetting import AEM_Appsetting
 from pages.base import BaseSetup
 from pages.login_page import LoginPage
 from pages.validate_veeva_doc_aem import ValidateVeevaDocAem
@@ -14,7 +15,7 @@ propertyutil = PropertyUtils()
 Test cases gets executed from this file. 
 '''
 
-def test_scenario1(set_up):
+def test_aem_to_veeva(set_up):
     print("____________Scenario 1________________")
     aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
     veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
@@ -40,14 +41,12 @@ def test_scenario1(set_up):
 
 
 
-def test_scenario2(set_up):
+def test_veeva_to_aem(set_up):
     print("____________Scenario 2________________")
     veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
     veevaaemdoctransfer = VeevatoAemContentTransfer(WebDriverUtil.getwebdriverinstance())
-    loginpage = LoginPage(WebDriverUtil.getwebdriverinstance())
     validateveevatoaem = ValidateVeevaDocAem(WebDriverUtil.getwebdriverinstance())
     base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
-    time.sleep(3)
     veevatoaem.click_all_library()
     veevaaemdoctransfer.document_types_veeva()
     veevaaemdoctransfer.component_asset_veeva()
@@ -57,15 +56,32 @@ def test_scenario2(set_up):
     veevaaemdoctransfer.demo2_env_aem()
     veevaaemdoctransfer.close_page_icon()
     veevaaemdoctransfer.global_document_id()
-    time.sleep(3)
     base_page.switch_window("AEM")
     validateveevatoaem.click_home_page_aem()
-    print("--------Clicked on Adobe Experience Manager------")
     validateveevatoaem.click_folder_asset()
     validateveevatoaem.click_folder_files()
     validateveevatoaem.click_folder_xpconnect()
     validateveevatoaem.click_folder_demovault()
+    validateveevatoaem.scroll_content_component_asset()
     validateveevatoaem.click_content_component_asset()
     validateveevatoaem.click_xpconnect_menu()
     validateveevatoaem.click_v_metadata()
     validateveevatoaem.assert_document_id_veeva_to_aem()
+
+def test_aem_application_setting(set_up):
+    print("____________Scenario 3________________")
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    aemappsetting = AEM_Appsetting(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    aemappsetting.click_xpconnect_content()
+    aemappsetting.click_app_setting()
+    aemappsetting.click_xp_edit_button()
+    base_page.switch_window("application-setting")
+    aemappsetting.switch_to_appsetting_frame()
+    aemappsetting.click_demo_dashboard()
+    aemappsetting.click_veeva_credentials()
+    aemappsetting.verify_veeva_url()
+    aemappsetting.verify_veeva_username()
+    aemappsetting.assert_veeva_url_username()
+
+

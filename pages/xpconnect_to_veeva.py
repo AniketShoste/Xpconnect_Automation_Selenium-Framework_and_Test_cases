@@ -11,8 +11,7 @@ class AemToVeeva(BaseSetup):
     def __init__(self, driver):
         super().__init__(driver)
         print("login page init")
-        # self.driver = driver
-        # self.selenium_utility = SeleniumUtility(self.driver)
+
 
 
     '''
@@ -32,74 +31,52 @@ class AemToVeeva(BaseSetup):
 
     def click_html_page(self):
         print(*self.we_retail)
-        self.seleniumutil.wait_for_element(self.we_retail)
+        self.seleniumutil.wait_for_element_visible(self.we_retail)
         self.seleniumutil.click(*self.we_retail)
         print("We retail clicked")
 
     def click_on_xpconnect(self):
-        self.seleniumutil.wait_for_element(self.xp_connect)
+        self.seleniumutil.wait_for_element_visible(self.xp_connect)
         self.seleniumutil.click(*self.xp_connect)
         print("Clcked on Xpconnect")
-        #time.sleep(5)
 
     def click_send_to_veeva(self):
-        self.seleniumutil.wait_for_element(self.send_to_veeva)
+        self.seleniumutil.wait_for_element_visible(self.send_to_veeva)
         self.seleniumutil.click(*self.send_to_veeva)
         print("Clcked on send to veeva")
-        #time.sleep(10)
 
     def click_select_workflow(self):
-        self.seleniumutil.wait_for_element(self.select_workflow)
+        self.seleniumutil.wait_for_element_visible(self.select_workflow)
         self.seleniumutil.click(*self.select_workflow)
         print("Click on select workflow")
-        #time.sleep(10)
 
     def click_xpconnect_workflow(self):
-        self.seleniumutil.wait_for_element(self.xp_connect_workflow)
+        self.seleniumutil.wait_for_element_visible(self.xp_connect_workflow)
         self.seleniumutil.click(*self.xp_connect_workflow)
         print("Click on xpconnect workflow")
-        #time.sleep(10)
 
     def click_start_workflow(self):
-        self.seleniumutil.wait_for_element(self.start_workflow)
+        self.seleniumutil.wait_for_element_visible(self.start_workflow)
         self.seleniumutil.click(*self.start_workflow)
         print("Click on start workflow")
-        #time.sleep(10)
 
     def click_warning_pop_up_checkbox(self):
-        self.seleniumutil.wait_for_element(self.warning_pop_up_checkbox)
+        self.seleniumutil.wait_for_element_visible(self.warning_pop_up_checkbox)
         self.seleniumutil.click(*self.warning_pop_up_checkbox)
         print("Click on warning pop up checkbox")
-        #time.sleep(10)
 
     def click_proceed_workflow(self):
-        self.seleniumutil.wait_for_element(self.proceed_workflow)
+        self.seleniumutil.wait_for_element_visible(self.proceed_workflow)
         self.seleniumutil.click(*self.proceed_workflow)
         print("Click on proceed workflow")
-        time.sleep(15)
 
     def click_veeva_metadata(self):
-        self.seleniumutil.wait_for_element(self.veeva_metadata)
+        self.seleniumutil.wait_for_element_visible(self.veeva_metadata)
         self.seleniumutil.click(*self.veeva_metadata)
         print("Click on proceed workflow")
-        #time.sleep(10)
 
     def get_document_id(self):
-        self.seleniumutil.wait_for_element(self.document_number_aem)
+        self.seleniumutil.wait_for_element_visible(self.document_number_aem)
         doc_id = self.seleniumutil.text(*self.document_number_aem)
         self.propertyutil.set_property("doc_id",doc_id)
         print("Document number is", doc_id)
-        #time.sleep(10)
-
-    # def new_tab(self,url):
-    #     self.seleniumutil.open_new_tab(url)
-    #     print("new tab opened")
-    #     time.sleep(5)
-    #
-    # def switch_window(self,windowtitle):
-    #     self.seleniumutil.switch_to_window(windowtitle)
-    #     print("Switch to window")
-    #     time.sleep(5)
-    #
-    # def refresh_page(self):
-    #     self.seleniumutil.refresh()

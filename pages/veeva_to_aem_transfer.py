@@ -25,37 +25,37 @@ class VeevatoAemContentTransfer(BaseSetup):
     global_doc_id = (By.CSS_SELECTOR, ".docInfoValue-docGlobalId_b")
 
     def document_types_veeva(self):
-        self.seleniumutil.wait_for_element(self.document_Types)
+        self.seleniumutil.wait_for_element_visible(self.document_Types)
         self.seleniumutil.click(*self.document_Types)
         print("Clicked on document types")
 
     def component_asset_veeva(self):
-        self.seleniumutil.wait_for_element(self.component_asset)
+        self.seleniumutil.wait_for_element_visible(self.component_asset)
         self.seleniumutil.click(*self.component_asset)
         print("Clicked on component asset")
 
     def content_component_asset_veeva(self):
-        self.seleniumutil.wait_for_element(self.content_component_asset)
+        self.seleniumutil.wait_for_element_visible(self.content_component_asset)
         self.seleniumutil.click(*self.content_component_asset)
         print("Clicked on content under component asset")
 
     def menu_for_aem_env_veeva(self):
-        self.seleniumutil.wait_for_element(self.menu_for_aem_env)
+        self.seleniumutil.wait_for_element_visible(self.menu_for_aem_env)
         self.seleniumutil.click(*self.menu_for_aem_env)
         print("Clicked on send content from veeva to aem")
 
     def demo2_env_aem(self):
-        self.seleniumutil.wait_for_element(self.demo_env)
+        self.seleniumutil.wait_for_element_visible(self.demo_env)
         self.seleniumutil.click(*self.demo_env)
         print("Clicked on demo environment")
 
     def close_page_icon(self):
-        self.seleniumutil.wait_for_element(self.close_page)
+        self.seleniumutil.wait_for_element_visible(self.close_page)
         self.seleniumutil.click(*self.close_page)
         print("Clicked on close page icon")
 
     def global_document_id(self):
-        self.seleniumutil.wait_for_element(self.global_doc_id)
+        self.seleniumutil.wait_for_element_visible(self.global_doc_id)
         global_id_veeva = self.seleniumutil.text(*self.global_doc_id)
         self.propertyutil.set_property("global_id_veeva", global_id_veeva)
         print("Captured global account id",global_id_veeva)

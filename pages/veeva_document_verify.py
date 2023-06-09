@@ -23,20 +23,20 @@ class VeevatoAem(BaseSetup):
     document_number_veeva = (By.CSS_SELECTOR, ".docInfoValue-DocumentNumber")
 
     def click_all_library(self, ):
-        self.seleniumutil.wait_for_element(self.all_library)
+        self.seleniumutil.wait_for_element_visible(self.all_library)
         self.seleniumutil.click(*self.all_library)
-        self.seleniumutil.wait_for_element(self.recent_library)
+        self.seleniumutil.wait_for_element_visible(self.recent_library)
         self.seleniumutil.click(*self.recent_library)
         print("Clicked on all library")
 
     def click_content_aem(self):
-        self.seleniumutil.wait_for_element(self.asset_from_aem)
+        self.seleniumutil.wait_for_element_visible(self.asset_from_aem)
         self.seleniumutil.click(*self.asset_from_aem)
         print("CLicked on content from library")
 
 
     def assert_document_number(self):
-        self.seleniumutil.wait_for_element(self.document_number_veeva)
+        self.seleniumutil.wait_for_element_visible(self.document_number_veeva)
         doc_id_veeva = self.seleniumutil.text(*self.document_number_veeva)
         assert doc_id_veeva == self.propertyutil.get_property("doc_id")
         print("Document validated successfully")
