@@ -38,16 +38,19 @@ class AEM_Appsetting(BaseSetup):
         print("Click on Xpconnect application setting")
 
     def click_xp_edit_button(self):
+        time.sleep(3)
         self.seleniumutil.wait_for_element_clickable(self.xp_edit_button)
         self.seleniumutil.click(*self.xp_edit_button)
         print("Click on Xpconnect application setting")
 
     def switch_to_appsetting_frame(self):
+        time.sleep(3)
         self.seleniumutil.wait_for_element_visible(self.frame_demo)
         self.seleniumutil.switch_to_frame(*self.frame_demo)
         print("Switched frame")
 
     def click_demo_dashboard(self):
+        time.sleep(3)
         self.seleniumutil.wait_for_element_visible(self.demo_dashboard)
         self.seleniumutil.click_using_js(*self.demo_dashboard)
         print("Clicked on demo dashboard")
