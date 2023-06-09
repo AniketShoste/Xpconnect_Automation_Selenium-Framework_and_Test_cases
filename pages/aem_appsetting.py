@@ -38,7 +38,7 @@ class AEM_Appsetting(BaseSetup):
         print("Click on Xpconnect application setting")
 
     def click_xp_edit_button(self):
-        self.seleniumutil.wait_for_element_visible(self.xp_edit_button)
+        self.seleniumutil.wait_for_element_clickable(self.xp_edit_button)
         self.seleniumutil.click(*self.xp_edit_button)
         print("Click on Xpconnect application setting")
 
