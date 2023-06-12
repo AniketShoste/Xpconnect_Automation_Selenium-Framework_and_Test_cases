@@ -40,7 +40,7 @@ class WebDriverUtil:
         global driver
         if browser == "Chrome":
             options = webdriver.ChromeOptions()
-            #options.headless = True
+            options.headless = True
             options.add_argument("--window-size=1920,1080")
             capabilities = webdriver.DesiredCapabilities().CHROME.copy()
             capabilities['acceptInsecureCerts'] = True
