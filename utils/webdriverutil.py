@@ -40,9 +40,11 @@ class WebDriverUtil:
         global driver
         if browser == "Chrome":
             options = webdriver.ChromeOptions()
-            options.headless = True
+            #options.headless = True
             options.add_argument("--window-size=1920,1080")
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+            capabilities = webdriver.DesiredCapabilities().CHROME.copy()
+            capabilities['acceptInsecureCerts'] = True
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options,desired_capabilities=capabilities)
         elif browser == "Firefox":
             driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
         else:
