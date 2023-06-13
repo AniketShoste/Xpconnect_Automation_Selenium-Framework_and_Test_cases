@@ -4,10 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
+
 '''
 this class initialize the web driver and handles the browser dependency
 
 '''
+
 
 class WebDriverUtil:
     __d_instance = None
@@ -44,7 +46,8 @@ class WebDriverUtil:
             options.add_argument("--window-size=1920,1080")
             capabilities = webdriver.DesiredCapabilities().CHROME.copy()
             capabilities['acceptInsecureCerts'] = True
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options,desired_capabilities=capabilities)
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options,
+                                      desired_capabilities=capabilities)
         elif browser == "Firefox":
             driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
         else:

@@ -78,8 +78,14 @@ class SeleniumUtility():
     def click_using_js(self, selector, locator):
         self.driver.execute_script("document.querySelector('" + locator + "').click();")
 
+    def input_text_using_js(self, value,selector, locator):
+        self.driver.execute_script("document.querySelector('" + locator + "').value='"+value+"';")
+
     def fetch_using_js(self, selector, locator):
         return self.driver.execute_script("return document.querySelector('" + locator + "').getAttribute('value');")
+
+    def verify_text_using_js(self,selector,locator):
+        return self.driver.execute_script("return document.querySelector('" + locator + "').textContent;")
 
     def close_tab(self):
         self.driver.close()

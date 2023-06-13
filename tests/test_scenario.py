@@ -3,6 +3,7 @@ import time
 from pages.aem_appsetting import AEM_Appsetting
 from pages.base import BaseSetup
 from pages.login_page import LoginPage
+from pages.modular_content import Module_Content_Builder
 from pages.validate_veeva_doc_aem import ValidateVeevaDocAem
 from pages.veeva_document_verify import VeevatoAem
 from pages.veeva_to_aem_transfer import VeevatoAemContentTransfer
@@ -85,3 +86,27 @@ def test_aem_application_setting(set_up):
     aemappsetting.assert_veeva_url_username()
 
 
+def test_module_content_builder(set_up):
+    print("____________Scenario 4________________")
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    aemappsetting = AEM_Appsetting(WebDriverUtil.getwebdriverinstance())
+    modulecontentbuilder = Module_Content_Builder(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    aemappsetting.click_xpconnect_content()
+    aemappsetting.click_app_setting()
+    aemappsetting.click_xp_edit_button()
+    base_page.switch_window("application-setting")
+    aemappsetting.switch_to_appsetting_frame()
+    modulecontentbuilder.click_modular_content_builder()
+    modulecontentbuilder.enter_value_search_box()
+    modulecontentbuilder.click_search_box()
+    modulecontentbuilder.click_veeva_module_selector()
+    modulecontentbuilder.click_one_asset_claim()
+    modulecontentbuilder.click_displayed_asset_dropdown()
+    modulecontentbuilder.click_select_displayed_asset()
+    modulecontentbuilder.click_claims_associated_dropdown()
+    modulecontentbuilder.click_select_associated_claim()
+    modulecontentbuilder.click_create_mcb()
+    modulecontentbuilder.enter_title_content()
+    modulecontentbuilder.click_create_mcb_button()
+    assert modulecontentbuilder.check_validate_content_link()
