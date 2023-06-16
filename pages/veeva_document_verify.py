@@ -34,7 +34,10 @@ class VeevatoAem(BaseSetup):
     asset_from_aem_editor = (By.CSS_SELECTOR, "div[name='WKND Events'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
     xf_from_aem_editor = (By.CSS_SELECTOR, "div[name='Test1'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
 
-
+    doc_first_level = (By.CSS_SELECTOR,"div[name='Language Masters'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
+    doc_second_level = (By.CSS_SELECTOR,"div[name='English'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
+    doc_third_level = (By.CSS_SELECTOR,"div[name='Experience'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
+    doc_fourth_level = (By.CSS_SELECTOR,"div[name='Arctic Surfing In Lofoten'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
 
     def click_all_library(self, ):
         self.seleniumutil.wait_for_element_visible(self.all_library)
@@ -127,3 +130,23 @@ class VeevatoAem(BaseSetup):
         if self.propertyutil.get_property("doc_id") in self.recent_library:
             return False
         return True
+
+    def click_content_aem_firstlev(self):
+        self.seleniumutil.wait_for_element_visible(self.doc_first_level)
+        self.seleniumutil.click(*self.doc_first_level)
+        print("CLicked on content from library")
+
+    def click_content_aem_secondlev(self):
+        self.seleniumutil.wait_for_element_visible(self.doc_second_level)
+        self.seleniumutil.click(*self.doc_second_level)
+        print("CLicked on content from library")
+
+    def click_content_aem_thirdlev(self):
+        self.seleniumutil.wait_for_element_visible(self.doc_third_level)
+        self.seleniumutil.click(*self.doc_third_level)
+        print("CLicked on content from library")
+
+    def click_content_aem_fourthlev(self):
+        self.seleniumutil.wait_for_element_visible(self.doc_fourth_level)
+        self.seleniumutil.click(*self.doc_fourth_level)
+        print("CLicked on content from library")

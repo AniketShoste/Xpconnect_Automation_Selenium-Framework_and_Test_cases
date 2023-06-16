@@ -34,13 +34,13 @@ The utils/ - directory includes utility modules such as driver.py, which handles
    SeleniumUtils :  This class contains all the selenium related methods where user can input values using send_keys(), can click on buttons and links using Click(), etc.
    WebdriverUtils : This class contains methods to initialze the webdriver on the choice of browser suite need to be executed.You can customize this function to use the appropriate browser and configuration options.
 
-The application.properties: This file has user credentials and urls stored which can be parameterized in the framework using propertyutils class.
+The application.properties: This file has user credentials and urls stored which can be parameterized in the framework using property utils class.
 _______________________________________________________________________________________________________________________________________________________________________________________________________________
 
 3. Writing Test Cases
 
-For writing steps, we need all the functional action steps and assertion steps. No locator and action method gets written in the test file.
-Test file should always start with test_filename or filename_test. Class objects gets created from pages package and corrosponding methods gets called
+For writing steps, we need all the functional action steps and assertion steps. No locator and action method gets written in the test file. - Please see test_scenario.py for reference
+Test file should always start with test_filename or filename_test. Class objects gets created from pages package and corresponding methods gets called
 to complete the actions and assertions gets called and values gets compared from/to property file. Please see test_scenario.py for reference.
 
 _______________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -51,7 +51,7 @@ To execute your tests, open a terminal or command prompt and navigate to the roo
 
 pytest -sv --html=report.html - All scenario's
 
-pytest -sv -k "test_scenario2" --html=report.html - Single scenario
+pytest -sv -k "<test case name>" --html=report.html - Single scenario
 
 
 _______________________________________________________________________________________________________________________________________________________________________________________________________________
