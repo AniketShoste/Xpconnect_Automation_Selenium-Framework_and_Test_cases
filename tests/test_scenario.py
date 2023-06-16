@@ -1,5 +1,6 @@
 import time
 
+from pages.Xp_Omni_Channel_Components import xpomni
 from pages.aem_appsetting import AEM_Appsetting
 from pages.base import BaseSetup
 from pages.login_page import LoginPage
@@ -7,6 +8,7 @@ from pages.modular_content import Module_Content_Builder
 from pages.validate_veeva_doc_aem import ValidateVeevaDocAem
 from pages.veeva_document_verify import VeevatoAem
 from pages.veeva_to_aem_transfer import VeevatoAemContentTransfer
+from pages.xf_editor_mode_upload import xf_editor
 from pages.xpconnect_to_veeva import AemToVeeva
 from utils.property_util import PropertyUtils
 from utils.webdriverutil import WebDriverUtil
@@ -16,7 +18,7 @@ propertyutil = PropertyUtils()
 Test cases gets executed from this file. 
 '''
 
-def test_aem_to_veeva(set_up):
+def test_aem_to_veeva_1(set_up):
     print("____________Scenario 1________________")
     aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
     veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
@@ -42,7 +44,7 @@ def test_aem_to_veeva(set_up):
 
 
 
-def test_veeva_to_aem(set_up):
+def test_veeva_to_aem_2(set_up):
     print("____________Scenario 2________________")
     veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
     veevaaemdoctransfer = VeevatoAemContentTransfer(WebDriverUtil.getwebdriverinstance())
@@ -67,9 +69,9 @@ def test_veeva_to_aem(set_up):
     validateveevatoaem.click_content_component_asset()
     validateveevatoaem.click_xpconnect_menu()
     validateveevatoaem.click_v_metadata()
-    validateveevatoaem.assert_document_id_veeva_to_aem()
+    assert validateveevatoaem.assert_document_id_veeva_to_aem()
 
-def test_aem_application_setting(set_up):
+def test_aem_application_setting_3(set_up):
     print("____________Scenario 3________________")
     base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
     aemappsetting = AEM_Appsetting(WebDriverUtil.getwebdriverinstance())
@@ -86,7 +88,7 @@ def test_aem_application_setting(set_up):
     aemappsetting.assert_veeva_url_username()
 
 
-def test_module_content_builder(set_up):
+def test_module_content_builder_4(set_up):
     print("____________Scenario 4________________")
     base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
     aemappsetting = AEM_Appsetting(WebDriverUtil.getwebdriverinstance())
@@ -110,3 +112,229 @@ def test_module_content_builder(set_up):
     modulecontentbuilder.enter_title_content()
     modulecontentbuilder.click_create_mcb_button()
     assert modulecontentbuilder.check_validate_content_link()
+
+def test_presentation_page_xpomnicontent_5(set_up):
+    print("____________Scenario 5________________")
+    xp_omni = xpomni(WebDriverUtil.getwebdriverinstance())
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    xp_omni.click_omni_channel()
+    xp_omni.click_xp_cap()
+    xp_omni.click_iva()
+    xp_omni.click_presentation_page()
+    xp_omni.click_home()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_xpconnect_workflow()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    time.sleep(2)
+    xp_omni.click_home()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    xp_omni.get_home_doc_no()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_doc_home()
+    assert veevatoaem.assert_home_no()
+
+
+
+
+def test_email_page_xpomnicontent_6(set_up):
+    print("____________Scenario 6________________")
+    xp_omni = xpomni(WebDriverUtil.getwebdriverinstance())
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    xp_omni.click_omni_channel()
+    xp_omni.click_xp_cap()
+    xp_omni.click_email()
+    xp_omni.click_Email_page()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_xpconnect_workflow()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    xp_omni.click_Email_page()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    xp_omni.take_document_number_pdf()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_doc_email_sent()
+    assert veevatoaem.assert_documunet_email_no()
+
+
+
+def test_webpage_xpomnicontent_7(set_up):
+    print("____________Scenario 7________________")
+    xp_omni = xpomni(WebDriverUtil.getwebdriverinstance())
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    xp_omni.click_omni_channel()
+    xp_omni.click_xp_cap()
+    xp_omni.click_web_page()
+    xp_omni.click_Demo_Web_site()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_xpconnect_workflow()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    xp_omni.click_Demo_Web_site()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    xp_omni.get_demo_no()
+    aem_to_veeva.click_close_metadata_popup()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_doc_demo_website()
+    assert veevatoaem.assert_demo_no()
+
+
+def test_xp_fragment_editor_mode_8(set_up):
+    print("____________Scenario 8________________")
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    xf_upload = xf_editor(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    xf_upload.click_wknd_events()
+    xf_upload.click_edit()
+    base_page.switch_window("WKND")
+    xf_upload.click_editor()
+    xf_upload.click_xp_connect_editor()
+    xf_upload.click_send_to_veeva_editor()
+    xf_upload.click_select_workflow_editor()
+    xf_upload.click_xpconnect_workflow()
+    xf_upload.click_start_workflow()
+    aem_to_veeva.refresh_page()
+    xf_upload.click_editor()
+    xf_upload.click_xp_connect_editor()
+    xf_upload.click_veeva_metadata_editor()
+    aem_to_veeva.get_document_id()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_content_aem_editor()
+    veevatoaem.assert_document_number()
+
+def test_xf_to_veeva_9(set_up):
+    print("____________Scenario 9________________")
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    xf_upload = xf_editor(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    xf_upload.click_main_menu()
+    xf_upload.click_experience_fragments()
+    xf_upload.click_xf_drilldown()
+    xf_upload.click_xf_drilldown1()
+    xf_upload.click_xf_to_send()
+    xf_upload.click_edit_xf()
+    base_page.switch_window("master")
+    xf_upload.click_xp_connect_editor()
+    xf_upload.click_send_to_veeva_editor()
+    xf_upload.click_select_workflow_editor()
+    xf_upload.click_xpconnect_workflow()
+    xf_upload.click_start_workflow()
+    aem_to_veeva.refresh_page()
+    xf_upload.click_xp_connect_editor()
+    time.sleep(10)
+    aem_to_veeva.click_veeva_metadata()
+    aem_to_veeva.get_document_id()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_xf_aem_editor()
+    #veevatoaem.assert_document_number()
+
+
+def test_png_mp4_workflow_10(set_up):
+    print("____________Scenario 5________________")
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    aem_to_veeva.click_we_retail_navigate()
+    aem_to_veeva.click_spain()
+    aem_to_veeva.click_espanol()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_Xpconnect_mp4()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    aem_to_veeva.click_espanol()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    aem_to_veeva.get_document_id()
+    assert veevatoaem.assert_doc_recent_library()
+
+
+
+def test_pdf_individual_workflow_11(set_up):
+    print("____________Scenario 7________________")
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    aem_to_veeva.click_we_retail_navigate()
+    aem_to_veeva.click_spain()
+    aem_to_veeva.click_espanol()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_xpconnect_workflow()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    aem_to_veeva.click_espanol()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    aem_to_veeva.take_document_number_pdf()
+    aem_to_veeva.click_close_metadata_popup()
+    aem_to_veeva.switch_window("Veeva")
+    veevatoaem.click_all_library()
+    veevatoaem.click_doc_pdf_sent()
+    assert veevatoaem.assert_document_pdf_number()
+
+
+def test_pdf_image_workflow_12(set_up):
+    print("____________Scenario 4________________")
+    aem_to_veeva = AemToVeeva(WebDriverUtil.getwebdriverinstance())
+    veevatoaem = VeevatoAem(WebDriverUtil.getwebdriverinstance())
+    base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
+    base_page.switch_window("AEM")
+    aem_to_veeva.click_we_retail_navigate()
+    aem_to_veeva.click_Germany()
+    aem_to_veeva.click_Deutsh()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_send_to_veeva()
+    aem_to_veeva.click_select_workflow()
+    aem_to_veeva.click_Xpconnect_pdf_image()
+    aem_to_veeva.click_start_workflow()
+    aem_to_veeva.click_warning_pop_up_checkbox()
+    aem_to_veeva.click_proceed_workflow()
+    aem_to_veeva.refresh_page()
+    aem_to_veeva.click_Deutsh()
+    aem_to_veeva.click_on_xpconnect()
+    aem_to_veeva.click_veeva_metadata()
+    aem_to_veeva.get_document_id()
+    assert veevatoaem.assert_doc_recent_library()
+

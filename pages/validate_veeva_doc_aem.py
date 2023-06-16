@@ -22,10 +22,10 @@ class ValidateVeevaDocAem(BaseSetup):
     folder_files = (By.CSS_SELECTOR, "[data-foundation-collection-navigator-href] [icon='folder']")
     folder_xpconnect = (By.CSS_SELECTOR,"[data-foundation-collection-item-id='/content/dam/xpconnect'] .coral3-Card-context")
     folder_demovault = (By.CSS_SELECTOR,"[data-foundation-collection-item-id='/content/dam/xpconnect/demo-vault'] .foundation-collection-item-title")
-    content_component_asset = (By.CSS_SELECTOR,"[data-foundation-collection-item-id='/content/dam/xpconnect/demo-vault/SunflowerTest.jpg'] coral-card-info")
+    content_component_asset = (By.CSS_SELECTOR,"coral-masonry-item:nth-of-type(2)  .coral3-Card.foundation-collection-navigator > coral-card-info")
     xp_connect_content = (By.CSS_SELECTOR, "a#xpconnect-trigger > coral-anchorbutton-label")
     v_meta_data = (By.CSS_SELECTOR, "div#pageinfo-data > button[title='Veeva Metadata']")
-    document_id_vm = (By.CSS_SELECTOR, "tr:nth-of-type(8) > td:nth-of-type(2)")
+    document_id_vm = (By.CSS_SELECTOR, "[role='row']:nth-of-type(8) [role='gridcell']:nth-of-type(2)")
 
     def click_home_page_aem(self):
         self.seleniumutil.wait_for_element_visible(self.home_page_aem)
@@ -75,8 +75,11 @@ class ValidateVeevaDocAem(BaseSetup):
         print("Clicked on veeva metadata")
 
     def assert_document_id_veeva_to_aem(self):
+        time.sleep(2)
         self.seleniumutil.wait_for_element_visible(self.document_id_vm)
         doc_id_aem = self.seleniumutil.text(*self.document_id_vm)
         print("Document id captured", doc_id_aem)
-        assert doc_id_aem in self.propertyutil.get_property("global_id_veeva")
+        if doc_id_aem in self.propertyutil.get_property("global_id_veeva"):
+            return True
+        return False
         print("Document sent from veeva to aem successfully")

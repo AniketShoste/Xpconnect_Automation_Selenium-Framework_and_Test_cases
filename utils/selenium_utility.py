@@ -10,7 +10,7 @@ This is a utility class contains has all the selenium related methods which are 
 class SeleniumUtility():
     def __init__(self, driver):
         self.driver = driver
-        print(self.driver)
+        #print(self.driver)
         self.actions = ActionChains(self.driver)
 
     '''
