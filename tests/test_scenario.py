@@ -65,7 +65,6 @@ def test_veeva_to_aem_2(set_up):
     validateveevatoaem.click_folder_files()
     validateveevatoaem.click_folder_xpconnect()
     validateveevatoaem.click_folder_demovault()
-    validateveevatoaem.scroll_content_component_asset()
     validateveevatoaem.click_content_component_asset()
     validateveevatoaem.click_xpconnect_menu()
     validateveevatoaem.click_v_metadata()

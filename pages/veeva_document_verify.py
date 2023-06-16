@@ -85,7 +85,7 @@ class VeevatoAem(BaseSetup):
     def click_doc_email_sent(self):
         self.seleniumutil.wait_for_element_clickable(self.document_email_page)
         self.seleniumutil.click(*self.document_email_page)
-        print("Sended Email Doc is CLicked ")
+        print(" Email Doc is CLicked ")
 
     def assert_documunet_email_no(self):
         self.seleniumutil.wait_for_element_visible(self.document_number_veeva)
@@ -97,7 +97,7 @@ class VeevatoAem(BaseSetup):
     def click_doc_demo_website(self):
         self.seleniumutil.wait_for_element_clickable(self.document_demo_website)
         self.seleniumutil.click(*self.document_demo_website)
-        print("Sended Demo Website Doc is CLicked ")
+        print(" Demo Website Doc is CLicked ")
 
     def assert_demo_no(self):
         self.seleniumutil.wait_for_element_visible(self.document_demo_number)
