@@ -52,6 +52,7 @@ def test_veeva_to_aem_2(set_up):
     validateveevatoaem = ValidateVeevaDocAem(WebDriverUtil.getwebdriverinstance())
     base_page = BaseSetup(WebDriverUtil.getwebdriverinstance())
     veevatoaem.click_all_library()
+    veevaaemdoctransfer.click_all_library_facet()
     veevaaemdoctransfer.document_types_veeva()
     veevaaemdoctransfer.component_asset_veeva()
     base_page.refresh_page()

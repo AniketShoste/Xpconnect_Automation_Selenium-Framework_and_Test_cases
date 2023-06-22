@@ -82,4 +82,3 @@ class ValidateVeevaDocAem(BaseSetup):
         if doc_id_aem in self.propertyutil.get_property("global_id_veeva"):
             return True
         return False
-        print("Document sent from veeva to aem successfully")

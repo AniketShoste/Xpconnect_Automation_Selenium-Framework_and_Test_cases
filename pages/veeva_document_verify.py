@@ -18,8 +18,7 @@ class VeevatoAem(BaseSetup):
 
     all_library = (By.CSS_SELECTOR, "li:nth-of-type(2) > .vv-navbar-link")
     recent_library = (By.CSS_SELECTOR, "[class='0TB000000000102 recent'] .vv_secondary_nav_link")
-    asset_from_aem = (
-        By.CSS_SELECTOR, "div[name='We.Retail'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
+    asset_from_aem = (By.CSS_SELECTOR, "div[name='We.Retail'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
     document_number_veeva = (By.CSS_SELECTOR, ".docInfoValue-DocumentNumber")
 
     document_number_veva = (By.CSS_SELECTOR, "[docidx='0'] .docNumber")
@@ -32,7 +31,7 @@ class VeevatoAem(BaseSetup):
     document_demo_website = (By.CSS_SELECTOR, "div[name='Demo Web site'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
     document_demo_number = (By.CSS_SELECTOR, ".docInfoValue-DocumentNumber.doc_info_property_value.vv_docinfo_value")
     asset_from_aem_editor = (By.CSS_SELECTOR, "div[name='WKND Events'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
-    xf_from_aem_editor = (By.CSS_SELECTOR, "div[name='Test1'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
+    xf_from_aem_editor = (By.CSS_SELECTOR, "div[name='master'] .mimeTypeBox > .docThumbnail > .doc_preview_thumbnail.img_float_left")
 
     doc_first_level = (By.CSS_SELECTOR,"div[name='Language Masters'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
     doc_second_level = (By.CSS_SELECTOR,"div[name='English'] .docLink.doc_link_large.vv_doc_title_link > .docName.vv_doc_title_name.vv_keep_whitespace")
